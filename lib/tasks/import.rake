@@ -14,7 +14,7 @@ namespace :app do
       bg    = realm["battlegroup"]
       realm = realm["name"]
 
-      battlegroups[bg] = [] unless battlegroups.keys.include?(bg)
+      battlegroups[bg] ||= []
       battlegroups[bg].push realm
     end
 
