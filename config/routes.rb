@@ -1,9 +1,10 @@
 Battlegroups::Application.routes.draw do
   resources :battlegroups
   resources :realms
+  resources :sessions, :only => [:new, :create, :destroy]
 
-  get "/login"  => "admin#login"
-  get "/logout" => "admin#logout"
+  get '/login'  => "sessions#new"
+  get '/logout' => "sessions#destroy"
 
   root :to => "battlegroups#index"
 end
