@@ -1,4 +1,6 @@
 class RealmsController < ApplicationController
+  before_filter :authenticate_admin
+
   def create
     name = params[:realm][:name]
     name.split(',').each do |n|

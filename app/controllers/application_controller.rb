@@ -4,7 +4,12 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     authenticate_or_request_with_http_basic do |user, pass|
-      pass == ENV['HTTP_PASS']
+      session[:admin] = true if pass == ENV['HTTP_PASS']
+      true
     end
+  end
+
+  def authenticate_admin
+    redirect_to root_url unless session[:admin] == true
   end
 end
