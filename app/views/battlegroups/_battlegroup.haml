@@ -3,7 +3,8 @@
   - battlegroup.realms.each do |realm|
     = render realm
   = form_for battlegroup.realms.build do |f|
-    #new_realm
-      = f.hidden_field :battlegroup, :value => battlegroup.id
-      = f.label :name, "New Realm:"
-      = f.text_field :name, :size => 20
+    - if params[:show_fields]
+      #new_realm
+        = f.hidden_field :battlegroup, :value => battlegroup.id
+        = f.label :name, "New Realm:"
+        = f.text_field :name, :size => 20

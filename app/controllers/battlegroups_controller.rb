@@ -1,6 +1,6 @@
 class BattlegroupsController < ApplicationController
   def index
-    @battlegroups = Battlegroup.all
+    @battlegroups = Battlegroup.order('name ASC')
   end
 
   def update
