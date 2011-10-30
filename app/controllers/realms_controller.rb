@@ -1,8 +1,11 @@
 class RealmsController < ApplicationController
   def create
-    realm = Realm.new params[:realm]
-    realm.battlegroup_id = params[:realm][:battlegroup]
-    realm.save
+    name = params[:realm][:name]
+    name.split(',').each do |n|
+      realm = Realm.new name: n
+      realm.battlegroup_id = params[:realm][:battlegroup]
+      realm.save
+    end
     redirect_to root_path
   end
 
