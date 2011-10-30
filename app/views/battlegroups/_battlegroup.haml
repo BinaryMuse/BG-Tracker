@@ -2,9 +2,3 @@
   %h2= battlegroup.name
   - battlegroup.realms.each do |realm|
     = render realm
-  = form_for battlegroup.realms.build do |f|
-    - if params[:show_fields]
-      #new_realm
-        = f.hidden_field :battlegroup, :value => battlegroup.id
-        = f.label :name, "New Realm:"
-        = f.text_field :name, :size => 20
