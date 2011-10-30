@@ -1,7 +1,9 @@
-%h2= battlegroup.name
-%ul
+#battlegroup
+  %h2= battlegroup.name
   - battlegroup.realms.each do |realm|
-    = form_for realm, :remote => true do |f|
-      %div
-        = f.check_box :seen, :class => :realm_box
-        = f.label :seen, realm.name
+    = render realm
+  = form_for battlegroup.realms.build do |f|
+    #new_realm
+      = f.hidden_field :battlegroup, :value => battlegroup.id
+      = f.label :name, "New Realm:"
+      = f.text_field :name, :size => 20
